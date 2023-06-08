@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Days from './components/Days';
+import Header from './components/Header';
+import Write from './components/Write';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <nav>
+        <ul>
+          <li><Link to="/days">일기 보기</Link></li>
+          <li><Link to="/write">일기 쓰기</Link></li>
+          <li><Link to="/setting">설정</Link></li>
+        </ul>
+      </nav>
+      <div>
+        <Routes>
+          <Route path='/' element={<h2>WELCOME</h2>} />
+          <Route path='/write' element={<Write />} />
+          <Route path='/days' element={<Days />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
